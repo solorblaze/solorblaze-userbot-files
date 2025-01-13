@@ -21,7 +21,7 @@ class Module:
   def module_loaded(self):
     "Method for loading a module"
   
-  def message_handler(self, message : pyrogram.types.Message, send_message, command : str, args : list(str)):
+  async def message_handler(self, message : pyrogram.types.Message, send_message, command : str, args : list(str)):
     """
     Message handler
     send_message(text, message) - async def, to send (or change the text of the message if it is the owner of the userbot), with automatic translation into the language that is selected
