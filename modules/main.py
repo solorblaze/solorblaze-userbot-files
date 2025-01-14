@@ -28,3 +28,4 @@ class Module:
         """
         if command == "/test": # Command: /test or /test!main
             await send_message("<i>Test!</i>")
+module = Module()
