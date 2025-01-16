@@ -19,7 +19,7 @@ class Module:
         self.help = "/test - Test"
 
         # Database
-        self.database = database_method()
+        self.database = database_method
     
     def module_loaded(self):
         "Method for loading a module"
