@@ -9,7 +9,7 @@ import pyrogram
 
 
 class Module:
-    def __init__(self, database_method):
+    def __init__(self):
         "Module init"
 
         self.name = "TestModule"
@@ -19,7 +19,7 @@ class Module:
         self.help = "/test - Test"
 
         # Database
-        self.database = database_method
+        self.database = 0
     
     def module_loaded(self):
         "Method for loading a module"
