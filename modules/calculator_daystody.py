@@ -26,7 +26,7 @@ class Module:
                     result = eval(value)
                     formatted_result = format_float(result)
                     await message.reply(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
-                except Exception:
-                    await message.reply(f"❗ Ошибка при подсчёте примера.")
+            except Exception:
+                await message.reply(f"❗ Ошибка при подсчёте примера.")
 
 module = Module()
