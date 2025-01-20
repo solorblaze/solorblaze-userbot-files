@@ -18,15 +18,13 @@ class Module:
         "Method for loading a module"
 
     async def message_handler(self, message : pyrogram.types.Message, send_message, command : str, args : list[str]):
-        if command == "/test":
-            await send_message("<i>Test!</i>")
-        if command.startswith("/cl"):
+        if command == "/cl":
             try:
-                    value = message.text.split(" ", 1)[1]
+                    value = ' '.join(args)
                     result = eval(value)
                     formatted_result = format_float(result)
-                    await message.reply(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
+                    await send_message(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
             except Exception:
-                await message.reply(f"❗ Ошибка при подсчёте примера.")
+                await send_message(f"❗ Ошибка при подсчёте примера.")
 
 module = Module()
