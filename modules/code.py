@@ -97,7 +97,7 @@ class Module:
                 result = "❌"
                 reason = "Please use variable command."
 
-            if not is_only_english_letters():
+            if not is_only_english_letters(code):
                 result = "❌"
                 reason = "Please use only english."
 
