@@ -19,12 +19,9 @@ class Module:
 
     async def message_handler(self, message : pyrogram.types.Message, send_message, command : str, args : list[str]):
         if command == "/cl":
-            try:
-                    value = ' '.join(args)
-                    result = eval(value)
-                    formatted_result = format_float(result)
-                    await send_message(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
-            except Exception as e:
-                await send_message(f"❗ Ошибка при подсчёте примера: {e}")
+            value = ' '.join(args)
+            result = eval(value)
+            formatted_result = format_float(result)
+            await send_message(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
 
 module = Module()
