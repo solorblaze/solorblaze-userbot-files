@@ -22,7 +22,7 @@ class Module:
             await send_message("<i>Test!</i>")
         if command.startswith("/cl"):
             try:
-                value = message.text.split(" ", 1)[1]
+                    value = message.text.split(" ", 1)[1]
                     result = eval(value)
                     formatted_result = format_float(result)
                     await message.reply(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
