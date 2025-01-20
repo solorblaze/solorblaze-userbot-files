@@ -5,7 +5,7 @@ def format_float(number: float) -> str:
         return str(int(number))
 
 class Module:
-    def init(self):
+    def __init__(self):
         "Module init"
 
         self.name = "CalculatorModule"
