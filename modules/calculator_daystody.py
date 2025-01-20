@@ -23,6 +23,6 @@ class Module:
             value = ' '.join(args)
             result = eval(value)
             formatted_result = format_float(result)
-            await send_message(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
+            await send_message(f"<b>📠 Solution:</b> <code>{formatted_result}</code>")
 
 module = Module()
