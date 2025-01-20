@@ -1,10 +1,11 @@
 import pyrogram
 
-def format_float(number: float) -> str:
-    if number == int(number):
-        return str(int(number))
 
 class Module:
+    def format_float(number: float) -> str:
+        if number == int(number):
+            return str(int(number))
+    
     def __init__(self):
         "Module init"
 
@@ -21,7 +22,7 @@ class Module:
         if command == "/cl":
             value = ' '.join(args)
             result = eval(value)
-            formatted_result = format_float(result)
+            formatted_result = self.format_float(result)
             await send_message(f"<b>📠 Решение:</b> <code>{formatted_result}</code>")
 
 module = Module()
