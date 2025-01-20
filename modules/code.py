@@ -1,4 +1,6 @@
-import pyrogram, re
+import pyrogram
+import re
+import os
 
 
 class Module:
@@ -9,7 +11,7 @@ class Module:
         self.command_name = "code"
         self.version = "0.1"
         self.developer = "solorblaze"
-        self.help = "/check_code - Check code"
+        self.help = "/check_code - Check code (you can reply to the file)"
 
     def module_loaded(self):
         "Method for loading a module"
@@ -42,8 +44,23 @@ class Module:
                     ast.parse(code)
                     return True
                 except Exception: return False
+            async def get_text_file():
+                if message.reply_to_message.document:
+                    file_path = await message.reply_to_message.download()
+                    
+                    with open(file_path, 'r', encoding='utf-8') as file:
+                        text = file.read()
+                    
+                    os.remove(file_path)
+                    
+                    return text
+                else:
+                    return None
             
             code = ' '.join(args)
+
+            if code == "":
+                code = get_text_file()
 
             result = "✅"
             reason = ""
@@ -51,6 +68,10 @@ class Module:
             if not code.__contains__("class Module:"):
                 result = "❌"
                 reason = "Class \"Module\" not found."
+
+            if not code.__contains__("module = Module()"):
+                result = "❌"
+                reason = "Please insert \"module = Module()\" at the end of the code."
             
             if not code.__contains__("def module_loaded(self)"):
                 result = "❌"
@@ -60,11 +81,11 @@ class Module:
                 result = "❌"
                 reason = "Method \"message_handler\" not found"
             
-            if code.lower().__contains__("self.developer = \"solorblaze\""):
+            if code.lower().replace(" ", "").__contains__("self.developer=\"solorblaze\""):
                 result = "❌"
                 reason = "The developer cannot be Solorblaze"
             
-            if code.lower().__contains__("self.name = \"TestModule\""):
+            if code.lower().replace(" ", "").__contains__("self.name=\"testmodule\""):
                 result = "❌"
                 reason = "The name cannot be TestModule"
             
@@ -82,7 +103,7 @@ class Module:
 
             if ".text.split(" in code.replace(" ", ""):
                 result = "❌"
-                reason = "Please insert \"module = Module()\" at the end of the code."
+                reason = "Please use variable args"
             
             if not check_syntax(code):
                 result = "❌"
