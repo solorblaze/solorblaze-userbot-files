@@ -17,7 +17,7 @@ class Module:
         "Method for loading a module"
     
     async def message_handler(self, message : pyrogram.types.Message, send_message, command : str, args : list[str]):
-        if command == "/bb" or command == "/ai" or command == "/blackbox":
+        if command in ["/bb", "/ai", "/blackbox"]:
             requests_ = ' '.join(args)
             
             
@@ -30,7 +30,7 @@ class Module:
                 "role": "user"
                 }
             ],
-            "model": "BLACKBOX.AI",
+            "model": "blackbox.ai",
             "max_tokens": "1024"
             })
             headers = {
@@ -39,5 +39,5 @@ class Module:
 
             response = requests.request("POST", url, headers=headers, data=payload)
 
-            await send_message(response.text)
+            await send_message(f"<i>Response: {response.text}</i>")
 module = Module()
