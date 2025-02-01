@@ -17,7 +17,7 @@ class Module:
         "Method for loading a module"
     
     async def message_handler(self, message : pyrogram.types.Message, send_message, command : str, args : list[str]):
-        if ["/bb", "/ai", "/blackbox"] in command:
+        if command == "/bb" or command == "/ai" or command == "/blackbox":
             requests_ = ' '.join(args)
             
             
