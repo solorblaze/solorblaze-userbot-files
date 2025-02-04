@@ -30,7 +30,7 @@ class Module:
                 "role": "user"
                 }
             ],
-            "model": "blackbox.ai",
+            "model": "deepseek-ai/DeepSeek-V3",
             "max_tokens": "1024"
             })
             headers = {
